@@ -16,7 +16,7 @@
     return firstItem;
   }
 
-  console.log(myArray(array));
+  console.log(`Первый и последний эллемент массива ${myArray(array)}`);
 }
 
 {
