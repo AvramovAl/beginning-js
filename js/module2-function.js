@@ -326,13 +326,19 @@
   const array = [1, 2, 3, 4, 5];
   const value = 17;
 
+  // function includes(array, value) {
+  //   for (const item of array) {
+  //     if (item === value) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
+  // console.log(includes(array, value));
+
+  /** С использованием .includes и тернарного оператора */
   function includes(array, value) {
-    for (const item of array) {
-      if (item === value) {
-        return true;
-      }
-    }
-    return false;
+    return array.includes(value) ? true : false;
   }
   console.log(includes(array, value));
 }
