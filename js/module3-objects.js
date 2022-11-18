@@ -256,3 +256,4 @@
   }
   console.log(calculateTotalPrice("Grip"));
 }
+
