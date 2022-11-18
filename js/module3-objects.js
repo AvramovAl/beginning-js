@@ -189,71 +189,149 @@
   /** Напиши функцию getProductPrice(productName) которая принимает один параметр productName - название продукта.
    * Функция ищет объект продукта с таким именем (свойство name) в массиве products и возвращает его цену (свойство price).
    * Если продукт с таким названием не найден, функция должна возвращать null. */
-  const products = [
-    { name: "Radar", price: 1300, quantity: 4 },
-    { name: "Scanner", price: 2700, quantity: 3 },
-    { name: "Droid", price: 400, quantity: 7 },
-    { name: "Grip", price: 1200, quantity: 9 },
-  ];
-
-  function getProductPrice(productName) {
-    for (const product of products) {
-      if (product.name === productName) {
-        return product.price;
-      }
-    }
-    return null;
-  }
-  console.log(getProductPrice("Scanner"));
+  //   const products = [
+  //     { name: "Radar", price: 1300, quantity: 4 },
+  //     { name: "Scanner", price: 2700, quantity: 3 },
+  //     { name: "Droid", price: 400, quantity: 7 },
+  //     { name: "Grip", price: 1200, quantity: 9 },
+  //   ];
+  //   function getProductPrice(productName) {
+  //     for (const product of products) {
+  //       if (product.name === productName) {
+  //         return product.price;
+  //       }
+  //     }
+  //     return null;
+  //   }
+  //   console.log(getProductPrice("Scanner"));
+  // }
+  // {
+  //   /** Напиши функцию getAllPropValues(propName) которая принимает один параметр propName - имя (ключ) свойства.
+  //    * Функция должна вернуть массив всех значений свойства с таким именем из каждого объекта в массиве products.
+  //    * Если в объектах нет свойства с таким именем, функция должна вернуть пустой массив. */
+  //   const products = [
+  //     { name: "Radar", price: 1300, quantity: 4 },
+  //     { name: "Scanner", price: 2700, quantity: 3 },
+  //     { name: "Droid", price: 400, quantity: 7 },
+  //     { name: "Grip", price: 1200, quantity: 9 },
+  //   ];
+  //   function getAllPropValues(propName) {
+  //     const valueArray = [];
+  //     for (const product of products) {
+  //       const key = Object.keys(product);
+  //       if (key.includes(propName)) {
+  //         valueArray.push(product[propName]);
+  //       }
+  //     }
+  //     return valueArray;
+  //   }
+  //   console.log(getAllPropValues("price"));
+  // }
+  // {
+  //   /** Напиши функцию calculateTotalPrice(productName) которая принимает один параметр productName - название товара.
+  //    * Функция должна вернуть общую стоимость (цена * количество) товара с таким именем из массива products. */
+  //   const products = [
+  //     { name: "Radar", price: 1300, quantity: 4 },
+  //     { name: "Scanner", price: 2700, quantity: 3 },
+  //     { name: "Droid", price: 400, quantity: 7 },
+  //     { name: "Grip", price: 1200, quantity: 9 },
+  //   ];
+  //   function calculateTotalPrice(productName) {
+  //     let totallPrice = 0;
+  //     for (const product of products) {
+  //       if (product.name === productName) {
+  //         totallPrice = product.price * product.quantity;
+  //       }
+  //     }
+  //     return totallPrice;
+  //   }
+  //   console.log(calculateTotalPrice("Grip"));
+  // }
+  // {
+  //   /** Шлубокая деструктуризация объекта ПРИМЕР */
+  //   const forecast = {
+  //     today: {
+  //       low: 28,
+  //       high: 32,
+  //       icon: "https://www.flaticon.com/svg/static/icons/svg/861/861059.svg",
+  //     },
+  //     tomorrow: {
+  //       low: 27,
+  //       high: 31,
+  //     },
+  //   };
+  //   //Строка ниже это тоже самое в записи что и
+  //   const {
+  //     today: {
+  //       low: lowToday,
+  //       high: highToday,
+  //       icon: todayIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg",
+  //     },
+  //     tomorrow: {
+  //       low: lowTomorrow,
+  //       high: highTomorrow,
+  //       icon: tomorrowIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg",
+  //     },
+  //   } = forecast;
+  // Что и вот эта запись
+  // const highToday = highToday;
+  // const lowToday = lowToday;
+  // const todayIcon = icon;
+  // const highTomorrow = high;
+  // const lowTomorrow = low;
+  // const tomorrowIcon = icon;
 }
 
 {
-  /** Напиши функцию getAllPropValues(propName) которая принимает один параметр propName - имя (ключ) свойства.
-   * Функция должна вернуть массив всех значений свойства с таким именем из каждого объекта в массиве products.
-   * Если в объектах нет свойства с таким именем, функция должна вернуть пустой массив. */
-  const products = [
-    { name: "Radar", price: 1300, quantity: 4 },
-    { name: "Scanner", price: 2700, quantity: 3 },
-    { name: "Droid", price: 400, quantity: 7 },
-    { name: "Grip", price: 1200, quantity: 9 },
-  ];
-
-  function getAllPropValues(propName) {
-    const valueArray = [];
-
-    for (const product of products) {
-      const key = Object.keys(product);
-      if (key.includes(propName)) {
-        valueArray.push(product[propName]);
-      }
-    }
-
-    return valueArray;
-  }
-  console.log(getAllPropValues("price"));
+  /** Паттерн «Объект параметров» ТОЕСТЬ деструктуризация объекта сразу при вызове функции */
+  // Так было до деструктуризации
+  // const forecast = {
+  //   today: { low: 10, high: 20 },
+  //   tomorrow: { low: 20, high: 30 },
+  // };
+  // function calculateMeanTemperature(forecast) {
+  //   const todayLow = forecast.today.low;
+  //   const todayHigh = forecast.today.high;
+  //   const tomorrowLow = forecast.tomorrow.low;
+  //   const tomorrowHigh = forecast.tomorrow.high;
+  //   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+  // }
+  // // Так стало после деструктуризации
+  // function calculateMeanTemperature({
+  //   today: { low: todayLow, high: todayHigh },
+  //   tomorrow: { low: tomorrowLow, high: tomorrowHigh },
+  // }) {
+  //   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+  // }
+  // // Или такой вариант
+  // function calculateMeanTemperature(forecast) {
+  //   const {
+  //     today: { low: todayLow, high: todayHigh },
+  //     tomorrow: { low: tomorrowLow, high: tomorrowHigh },
+  //   } = forecast;
+  //   // Change code above this line
+  //   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+  // }
 }
 
 {
-  /** Напиши функцию calculateTotalPrice(productName) которая принимает один параметр productName - название товара.
-   * Функция должна вернуть общую стоимость (цена * количество) товара с таким именем из массива products. */
-
-  const products = [
-    { name: "Radar", price: 1300, quantity: 4 },
-    { name: "Scanner", price: 2700, quantity: 3 },
-    { name: "Droid", price: 400, quantity: 7 },
-    { name: "Grip", price: 1200, quantity: 9 },
-  ];
-
-  function calculateTotalPrice(productName) {
-    let totallPrice = 0;
-
-    for (const product of products) {
-      if (product.name === productName) {
-        totallPrice = product.price * product.quantity;
-      }
-    }
-    return totallPrice;
-  }
-  console.log(calculateTotalPrice("Grip"));
+  /** Оператором спред (...spread) можно соединять два массива в один с заменой эллементов, но последовательность распыления имеет ЗНАЧЕНИЕ*/
+  // Пример ниже
+  /** В конструкторе можно создавать новые тесты, для которых есть настройки по умолчанию которые хранятся в переменной defaultSettings.
+   * Во время создания теста, все или часть настроек можно переопределить, они хранятся в переменной overrideSettings. Для того чтобы получить
+   * финальные настройки теста, необходимо взять настройки по умолчанию и поверх них применить переопределённые настройки. Дополни код так, чтобы
+   * в переменной finalSettings получился объект финальных настроек теста. */
+  // const defaultSettings = {
+  //   theme: "light",
+  //   public: true,
+  //   withPassword: false,
+  //   minNumberOfQuestions: 10,
+  //   timePerQuestion: 60,
+  // };
+  // const overrideSettings = {
+  //   public: false,
+  //   withPassword: true,
+  //   timePerQuestion: 30,
+  // };
+  // const finalSettings = { ...defaultSettings, ...overrideSettings };
 }
-
