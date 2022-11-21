@@ -248,7 +248,7 @@
   //   console.log(calculateTotalPrice("Grip"));
   // }
   // {
-  //   /** Шлубокая деструктуризация объекта ПРИМЕР */
+  //   /** Глубокая деструктуризация объекта ПРИМЕР */
   //   const forecast = {
   //     today: {
   //       low: 28,
@@ -334,4 +334,158 @@
   //   timePerQuestion: 30,
   // };
   // const finalSettings = { ...defaultSettings, ...overrideSettings };
+}
+// {
+//   /** Напиши функцию makeTask(data) которая принимает один параметр data - объект со следующими свойствами.
+//    * text - текст задачи.
+//    * category - категория задачи.
+//    * priority - приоритет задачи.
+//    * Функция должна составить и вернуть новый объект задачи, не изменяя напрямую параметр data. В новом объекте должно быть свойство completed,
+//    * значение которого хранится в одноимённой локальной переменной. В параметре data гарантированно будет только свойство text, а остальные два,
+//    * category и priority, могут отсутствовать. Тогда, в новом объекте задачи, в свойствах category и priority должны быть значения по умолчанию,
+//    * хранящиеся в одноимённых локальных переменных. */
+//   function makeTask(data) {
+//     const completed = false;
+//     const category = "General";
+//     const priority = "Normal";
+//     // Change code below this line
+//     let res = {
+//       category,
+//       priority,
+//       ...data,
+//       completed,
+//     };
+//     console.log(res);
+//     return res;
+//   }
+//   // Change code above this line
+//   // makeTask({ category: "General", priority: "Normal", completed: false });
+//   makeTask({ text: "Buy bread" });
+// }
+
+// {
+//   /** Используя операцию rest дополни код функции add() так, чтобы она принимала любое количество аргументов, считала и возвращала их сумму. */
+//   function add(...numbers) {
+//     let nambersSum = 0;
+
+//     for (const number of numbers) {
+//       nambersSum += number;
+//     }
+//     console.log(nambersSum);
+//     return nambersSum;
+//   }
+//   add(74, 11, 62, 46, 12, 36);
+// }
+
+// {
+//   /** Функция addOverNum() считает сумму всех аргументов. Измени параметры и тело функции addOverNum() так, чтобы она считала сумму только тех аргументов,
+//    * которые больше чем заданное число. Это число должно быть первым параметром функции. */
+//   function add(firstNumber, ...numbers) {
+//     let nambersSum = 0;
+
+//     for (const number of numbers) {
+//       if (number > firstNumber) {
+//         nambersSum += number;
+//       }
+//     }
+//     console.log(nambersSum);
+//     return nambersSum;
+//   }
+//   add(20, 74, 11, 62, 46, 12, 36);
+// }
+
+// {
+//   /** Функция findMatches() принимает произвольное количество аргументов. Первым аргументом всегда будет массив чисел, а остальные аргументы будут
+//    * просто числами. Дополни код функции так, чтобы она возвращала новый массив matches, в котором будут только те аргументы, начиная со второго,
+//    * которые есть в массиве первого аргумента. Например, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) должна вернуть массив [1, 2], потому что только
+//    * они есть в массиве первого аргумента. */
+//   function findMatches(firstValues, ...secondValues) {
+//     const matches = [];
+//     // for (const valueFirst of firstValues) {
+//     //   for (const valueSecond of secondValues) {
+//     //     if (valueFirst === valueSecond) {
+//     //       matches.push(valueSecond);
+//     //     }
+//     //   }
+//     // }
+//     //Или так как сверху, или так как снизу
+//     for (const value of firstValues) {
+//       if (secondValues.includes(value)) {
+//         matches.push(value);
+//       }
+//     }
+//     console.log(matches);
+//     return matches;
+//   }
+
+//   findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2);
+// }
+
+// {
+//   /* Дополни метод updateBook(oldName, newName) так, чтобы он изменял название книги с oldName на newName в свойстве books. Используй indexOf() для того,
+//   чтобы найти нужный элемент массива, и splice() для того чтобы заменить этот элемент */
+//   const bookShelf = {
+//     books: ["The last kingdom", "Haze", "The guardian of dreams"],
+
+//     updateBook(oldName, newName) {
+//       const index = this.books.indexOf(oldName);
+//       this.books.splice(index, 1, newName);
+//     },
+//   };
+
+//   bookShelf.updateBook("The last kingdom", "Dune");
+// }
+{
+  /** Выполни рефакторинг методов объекта atTheOldToad так, чтобы они работали не с массивом строк, а с массивом объектов.
+        getPotions() - метод для получения всех зелий. Возвращает значение свойства potions.
+        addPotion(newPotion) - добавляет зелье newPotion (уже объект) в массив в свойстве potions, но только если такого зелья еще нет в инвентаре.
+        В противном случае возвращается строка.
+        removePotion(potionName) - удаляет объект зелья с именем potionName из массива в свойстве potions.
+        updatePotionName(oldName, newName) - обновляет свойство name объекта-зелья с названием oldName на newName в массиве potions. */
+
+  const atTheOldToad = {
+    potions: [
+      { name: "Speed potion", price: 460 },
+      { name: "Dragon breath", price: 780 },
+      { name: "Stone skin", price: 520 },
+    ],
+
+    getPotions() {
+      return this.potions;
+    },
+    addPotion(newPotion) {
+      for (const item of this.potions) {
+        if (item.name === newPotion.name) {
+          return `Error! Potion ${newPotion.name} is already in your inventory!`;
+        }
+      }
+      // const newProduct = {
+      //   ...newPotion,
+      // };
+
+      this.potions.push(newPotion);
+    },
+    removePotion(potionName) {
+      for (let i = 0; i < this.potions.length; i += 1) {
+        const potion = this.potions[i];
+        if (potionName === potion.name) {
+          this.potions.splice(i, 1);
+        }
+      }
+    },
+    updatePotionName(oldName, newName) {
+      let resalt = `Potion ${oldName} is not in inventory`;
+      for (let i = 0; i < this.potions.length; i += 1) {
+        const potion = this.potions[i];
+
+        if (oldName === potion.name) {
+          potion.name = newName;
+          resalt = `Found ${oldName} change to ${newName} `;
+        }
+      }
+      return console.log(resalt);
+    },
+  };
+
+  atTheOldToad.getPotions();
 }
